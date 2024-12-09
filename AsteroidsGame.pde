@@ -1,4 +1,4 @@
-int health = 100;
+
 Spaceship bob = new Spaceship();
 Star [] galaxy = new Star[200];
 public void setup() 
@@ -6,10 +6,6 @@ public void setup()
   background(0);
   size(500,500);
   
-  for(int i = 0; i < 10; i++){
-   Asteroid sue = new Asteroid();
-   rock.add(sue);
-  }
   
   for(int i = 0; i < galaxy.length; i++)
   {
@@ -48,22 +44,18 @@ public void draw()
 }
 
 public void keyPressed(){
-  //turn right
  if(key == 'h'){
    bob.turn(15);
  }
  if(key == 'f'){
   bob.turn(-15); 
  }
- //accelerate
  if(key =='t'){
   bob.accelerate(.5); 
  }
- //de-accelerate
  if(key == 'g'){
   bob.accelerate(-0.5); 
  }
- //hyperspacec
   if(key =='v'){
    bob.setXspeed(0);
    bob.setYspeed(0);
