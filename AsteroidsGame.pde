@@ -5,8 +5,6 @@ public void setup()
 {
   background(0);
   size(500,500);
-  
-  
   for(int i = 0; i < galaxy.length; i++)
   {
   galaxy[i] = new Star();
@@ -28,19 +26,6 @@ public void draw()
   text(("Y:" + bob.getCenterY()),10,60);
   text(("Xspeed:" + (int)bob.getXspeed()),10,80);
   text(("Yspeed:" + (int)bob.getYspeed()),10,100);
-  text(("Health:" + health), 10, 120);
-  
-  for(int i = 0; i < rock.size(); i++){
-   rock.get(i).move();
-   rock.get(i).show();
-   float d = dist(bob.getCenterX(), bob.getCenterY(), 
-   rock.get(i).getCenterX(), rock.get(i).getCenterY());
-   if(d<30){
-     rock.remove(i);
-     i--;
-     health -= 10;
-   }
-  }
 }
 
 public void keyPressed(){
