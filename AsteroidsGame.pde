@@ -1,6 +1,7 @@
 
 Spaceship bob = new Spaceship();
 Star [] galaxy = new Star[200];
+ArrayList<Asteroid> yes = new ArrayList<Asteroid>();
 public void setup() 
 {
   background(0);
@@ -9,9 +10,14 @@ public void setup()
   {
   galaxy[i] = new Star();
   }
+  for(int i = 0; i<5; i++){
+    Asteroid bob = new Asteroid();
+    yes.add(bob);
+  }
 }
 public void draw() 
 {
+  yes.get(0).show();
   background(0);
   for(int i = 0; i < galaxy.length; i++)
   {
@@ -26,6 +32,16 @@ public void draw()
   text(("Y:" + bob.getCenterY()),10,60);
   text(("Xspeed:" + (int)bob.getXspeed()),10,80);
   text(("Yspeed:" + (int)bob.getYspeed()),10,100);
+  
+  for(int i = 0; i < yes.size(); i++){
+   yes.get(i).move();
+   yes.get(i).show();
+   float d = dist(bob.getCenterX(), bob.getCenterY(), yes.get(i).getCenterX(), yes.get(i).getCenterY());
+   if(d<20){
+     yes.remove(i);
+     i--;
+   }
+  }
 }
 
 public void keyPressed(){
