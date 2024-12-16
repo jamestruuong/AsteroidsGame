@@ -11,12 +11,12 @@ public void setup()
   galaxy[i] = new Star();
   }
   for(int i = 0; i<5; i++){
-    yes.add(new Asteroid());
+    Asteroid urmom = new Asteroid();
+    yes.add(urmom);
   }
 }
 public void draw() 
 {
-  yes.get(0).show();
   background(0);
   for(int i = 0; i < galaxy.length; i++)
   {
@@ -36,7 +36,7 @@ public void draw()
    yes.get(i).move();
    yes.get(i).show();
    float d = dist(bob.getCenterX(), bob.getCenterY(), yes.get(i).getCenterX(), yes.get(i).getCenterY());
-   if(d<20){
+   if(d<=20){
      yes.remove(i);
      i--;
    }
@@ -75,6 +75,7 @@ public void keyPressed(){
    bob.setCenterY((int)(Math.random()*500));
    bob.setPointDirection((int)(Math.random()*360));
  }
+ 
  if(key =='y'){
    no.add(new Bullet(bob));
  }
