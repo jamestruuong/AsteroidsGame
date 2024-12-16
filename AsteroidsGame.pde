@@ -1,6 +1,6 @@
-
 Spaceship bob = new Spaceship();
 Star [] galaxy = new Star[200];
+ArrayList<Bullet> no = new ArrayList<Bullet>();
 ArrayList<Asteroid> yes = new ArrayList<Asteroid>();
 public void setup() 
 {
@@ -11,8 +11,7 @@ public void setup()
   galaxy[i] = new Star();
   }
   for(int i = 0; i<5; i++){
-    Asteroid bob = new Asteroid();
-    yes.add(bob);
+    yes.add(new Asteroid());
   }
 }
 public void draw() 
@@ -42,6 +41,18 @@ public void draw()
      i--;
    }
   }
+  
+  for(int i = no.size()-1; i>=0; i--){
+    no.get(i).show();
+    no.get(i).move();
+    for(int o = yes.size()-1; o>= 0; o--){
+      if(dist((float)(no.get(i).myCenterX), (float)(no.get(i).myCenterY), (float)(yes.get(o).myCenterX), (float)(yes.get(o).myCenterY))<=20){
+        no.remove(i);
+        yes.remove(o);
+        break;
+      } 
+    }
+  }
 }
 
 public void keyPressed(){
@@ -63,5 +74,8 @@ public void keyPressed(){
    bob.setCenterX((int)(Math.random()*500));
    bob.setCenterY((int)(Math.random()*500));
    bob.setPointDirection((int)(Math.random()*360));
+ }
+ if(key =='y'){
+   no.add(new Bullet(bob));
  }
 }
